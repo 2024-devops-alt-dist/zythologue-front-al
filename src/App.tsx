@@ -1,12 +1,17 @@
-import './App.css'
+import { Route, Routes } from 'react-router';
+import './App.css';
+import BeerPage from './pages/BeersPage';
+
 
 function App() {
 
   return (
     <>
-      <h1 className="">Zythologue</h1>
+      <Routes>
+        <Route path="/beers" element={<BeerPage />} />
+      </Routes>
     </>
   )
 }
 
-export default App
+export default App;
