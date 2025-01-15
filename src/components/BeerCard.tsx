@@ -1,8 +1,9 @@
+import { Link } from "react-router";
 import { Beer } from "../interfaces/Beer";
 
 function BeerCard({ beer }: {beer: Beer}) {
     return (
-        <div key={beer.id} className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden">
+        <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden">
 
             <img
                 className="w-full h-48 object-cover"
@@ -22,17 +23,16 @@ function BeerCard({ beer }: {beer: Beer}) {
                     <span>Ibu: {beer.ibu}</span>
                 </div>
                 <div className="text-right ">
-                    <button className="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full font-medium text-gray-500 transition-all duration-300 hover:w-32">
-                        <div className="inline-flex whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-x-3 group-hover:opacity-100">Voir plus</div>
-                        <div className="absolute right-3.5">
-                            <img src="/src/assets/icons/arrow_right.svg" alt="" />
-                        </div>
-                    </button>
+                    <Link to={`/beers/${beer.id}`}>
+                        <button className="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full font-medium text-gray-500 transition-all duration-300 hover:w-32">
+                            <div className="inline-flex whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-x-3 group-hover:opacity-100">Voir plus</div>
+                            <div className="absolute right-3.5">
+                                <img src="/src/assets/icons/arrow_right.svg" alt="" />
+                            </div>
+                        </button>
+                    </Link>
                 </div>
                 </div>
-
-
-
             </div>
         </div>
     )
