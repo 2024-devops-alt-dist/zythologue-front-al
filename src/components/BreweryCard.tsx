@@ -3,7 +3,7 @@ import { Brewery } from "../interfaces/Brewery";
 
 function BreweryCard({ brewery }: {brewery: Brewery}) {
     return (
-        <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden">
+        <div className="max-w-sm border border-gray-200 bg-white overflow-hidden">
 
             <img
                 className="w-full h-48 object-cover"

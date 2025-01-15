@@ -4,6 +4,7 @@ import Header from './components/Header';
 import BeerDetailPage from './pages/BeerDetailPage';
 import BreweriesPage from './pages/BreweriesPage';
 import BeersPage from './pages/BeersPage';
+import BreweryDetailPage from './pages/BreweryDetailPage';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/beers' element={<BeersPage />} />
         <Route path='/beers/:id' element={<BeerDetailPage />} />
         <Route path='/breweries' element={<BreweriesPage />} />
+        <Route path='/breweries/:id' element={<BreweryDetailPage />} />
       </Routes>
     </>
   )
