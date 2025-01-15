@@ -1,9 +1,9 @@
-import BeerList from "../components/BeerList";
+import BeersList from "../components/BeersList";
 
-function BeerPage() {
+function BeersPage() {
     return (
-        <BeerList />
+        <BeersList />
     );
 }
 
-export default BeerPage;
+export default BeersPage;

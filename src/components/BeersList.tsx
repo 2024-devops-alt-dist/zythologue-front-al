@@ -3,7 +3,7 @@ import { Beer } from "../interfaces/Beer"
 import BeerCard from "./BeerCard";
 import { fetchBeers } from "../services/BeerService";
 
-function BeerList() {
+function BeersList() {
 
     const [beers, setBeers] = useState<Beer[]>([]);
 
@@ -29,4 +29,4 @@ function BeerList() {
     )
 }
 
-export default BeerList;
+export default BeersList;
