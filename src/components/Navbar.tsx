@@ -15,7 +15,7 @@ function Navbar() {
                 <div className="w-1/5">
                     <Link to="/" className="flex gap-5 w-full">
                         <img src="/public/beer_logo.png" alt="logo zythologue" className="max-h-10"/>
-                        <span className="self-center text-xl font-bold text-lime-400">Zythologue</span>
+                        <span className="self-center text-xl font-bold text-green-600">Zythologue</span>
                     </Link>
                 </div>
                 <button 

@@ -35,13 +35,13 @@ function BeersPage() {
 
     return (
         <>
-            <Header title="LES BIERES" description="Retrouvez toutes les bières disponible sur notre site." image="beer_1.jpg"/>
+            <Header title="Bières" description="Retrouvez toutes les bières disponible sur notre site." />
 
-            <section className="flex justify-center my-7">
-                <div className="w-full max-w-sm">
-                    <div className="w-full">
+            <section className="flex justify-center bg-black p-10">
+                <div className="flex justify-center w-full">
+                    <div className="w-full max-w-md">
                         <input
-                            className="w-full bg-transparent placeholder:text-gray-400 text-gray-700 border border-gray-200 rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-gray-400 hover:border-gray-300"
+                            className="w-full bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400"
                             placeholder="Entrez votre recherche" 
                             onChange={handleChange}
                         />

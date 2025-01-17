@@ -4,7 +4,7 @@ import BeerCard from "./BeerCard";
 function BeersList({ beers }: {beers: Beer[]}) {
     
     return (
-        <div className="container mx-auto my-10 flex flex-wrap justify-center gap-5">
+        <div className="px-auto py-10 flex flex-wrap justify-center gap-5 bg-black">
             {beers.map((beer: Beer) => {
                 return <BeerCard key={beer.id} beer={beer} />
             })}

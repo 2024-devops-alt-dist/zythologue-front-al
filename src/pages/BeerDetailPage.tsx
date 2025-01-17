@@ -43,33 +43,45 @@ function BeerDetailPage() {
     }, []);
 
     return (
-        <section className="my-10 w-full border lg:flex gap-10 lg:max-h-72">
+        <section id="beer" className="w-full py-5 bg-green-600">
+            <div className="flex flex-col md:flex-row bg-black">
+                <img className="w-full object-cover md:w-1/2 md:mb-0" src="/src/assets/images/beer_test.jpg" alt={beer.name} />
 
-            <img className="w-full object-cover mb-5 lg:max-w-72 lg:mb-0" src="/src/assets/images/beer_test.jpg" alt={beer.name} />
+                <div className="flex flex-col gap-10 p-10 md:w-1/2">
+                    <div className="md:flex gap-10 text-gray-950 text-4xl">
+                        <h2 className="text-green-600 uppercase">{beer.name}</h2>
+                        <Link to={`/breweries/${beer.breweryId}`} className="text-white hover:underline">
+                            {brewery.name}
+                        </Link>
+                    </div>
+                    <hr className="text-green-600" />
+                    <p className="text-white text-xl">{beer.description}</p>
+                    <hr className="text-green-600" />
 
-            <div className="flex flex-col gap-10">
-            <div className="lg:flex gap-10 text-gray-950 font-extrabold text-4xl">
-                <h2>{beer?.name}</h2>
-                <span className="hidden lg:block">-</span>
-                <Link to={`/breweries/${beer.breweryId}`} className="text-gray-500 hover:underline">
-                    {brewery.name}
-                </Link>
-            </div>
-
-            <p className="text-gray-500 text-xl">{beer.description}</p>
-
-            <div className="flex gap-8 text-gray-700">
-                <div className="flex flex-col">
-                    <span className="text-lg font-semibold">ABV</span>
-                    <span className="text-xl">{beer.abv}%</span>
+                    <div className="flex gap-8">
+                        <div className="flex flex-col">
+                            <span className="text-lg text-green-600">ABV</span>
+                            <span className="text-xl text-white">{beer.abv}%</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-lg text-green-600">IBU</span>
+                            <span className="text-xl text-white">{beer.ibu}</span>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col">
-                    <span className="text-lg font-semibold">IBU</span>
-                    <span className="text-xl">{beer.ibu}</span>
-                </div>
             </div>
-        </div>
-    </section>
+            <div className="flex flex-col md:flex-row bg-black">
+
+                <div className="flex flex-col gap-10 p-10 md:w-1/2">
+                    <div className="lg:flex gap-10 text-gray-950 text-4xl">
+                        <h2 className="text-green-600 uppercase">Ingrédients</h2>
+                    </div>
+                    <hr className="text-green-600" />
+
+                </div>
+                <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/src/assets/images/beer_3.jpg" alt={beer.name} />
+            </div>
+        </section>
     )
 }
 

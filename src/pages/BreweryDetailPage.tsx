@@ -43,29 +43,35 @@ function BreweryDetailPage() {
 
     return (
         <>
-            <section className="container mx-auto my-10 lg:flex gap-10 p-10 rounded-3xl w-full border">
-                <div className="rounded-lg w-full mb-5 lg:max-w-72 ">
-                    <img className="w-full object-cover rounded-2xl" src="/src/assets/images/brewery_test.jpg" alt={brewery.name} />
-                </div>
-                <div className="">
-                    <div className="">
-                        <h2 className="text-gray-950 font-extrabold text-4xl">{brewery.name}</h2>
-                        <p className="text-2xl text-gray-500">{brewery.country}</p>
-                    </div>
+            <section className="w-full py-5 bg-green-600">
+                <div className="flex bg-black">
+                    <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/src/assets/images/brewery_test.jpg" alt={brewery.name} />
 
-                    <p className="text-gray-500 text-xl">{brewery.description}</p>
-                    <div className="mt-5">
-                        <h2 className="text-2xl text-gray-900">Contact :</h2>
-                        <p className="text-gray-500 text-xl">{brewery.address}</p>
-                        <p className="text-gray-500 text-xl">{brewery.email}</p>
-                    </div>
-                    <div className="mt-5">
-                    <h2 className="text-2xl text-gray-900">Retrouvez plus de détails sur le site :</h2>
-                    <a href={brewery.link} target="_blank" className="text-gray-500 text-xl hover:underline">{brewery.link}</a>
+                    <div className="flex flex-col gap-10 p-10 md:w-1/2">
+                        <div className="md:flex gap-10 items-center">
+                            <h2 className="text-green-600 uppercase text-4xl">{brewery.name}</h2>
+                            <p className="text-2xl text-white">{brewery.country}</p>
+                        </div>
+                        <hr />
+
+                        <p className="text-white text-xl">{brewery.description}</p>
+
+                        <hr />
+                        <div>
+                            <p className="text-white  text-xl"><span className="text-green-600">Adresse : </span>{brewery.address}</p>
+                            <p className="text-white  text-xl"><span className="text-green-600">E-mail : </span>{brewery.email}</p>
+                        </div>
+                        <hr />
+                        <div className="mt-5">
+                            <span className="text-xl text-green-600">Site : </span><a href={brewery.link} target="_blank" className="text-white text-xl hover:underline">{brewery.link}</a>
+                        </div>
                     </div>
                 </div>
             </section>
-            <BeersList beers={beers} />
+            <section className="bg-black p-10 ">
+                <h2 className="text-white text-4xl">Les bières proposées par cette brasserie :</h2>
+                <BeersList beers={beers} />
+            </section>
         </>
     )
 }
