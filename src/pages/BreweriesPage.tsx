@@ -3,6 +3,7 @@ import BreweryList from "../components/BreweriesList";
 import { fetchBreweries } from "../services/BreweryService";
 import { Brewery } from "../interfaces/Brewery";
 import filterData from "../utils/functions/filterData";
+import Header from "../components/Header";
 
 function BreweriesPage() {
 
@@ -34,6 +35,7 @@ function BreweriesPage() {
     
     return (
         <>
+            <Header title="Brasseries" description="Retrouvez toutes les brasseries disponibles sur notre site." image="beer_barrel_1.jpg"/>
             <section className="flex justify-center my-7">
                 <div className="w-full max-w-sm">
                     <div className="w-full">

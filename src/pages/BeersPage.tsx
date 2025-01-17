@@ -3,6 +3,7 @@ import BeersList from "../components/BeersList";
 import { Beer } from "../interfaces/Beer";
 import { fetchBeers } from "../services/BeerService";
 import filterData from "../utils/functions/filterData";
+import Header from "../components/Header";
 
 function BeersPage() {
 
@@ -34,6 +35,8 @@ function BeersPage() {
 
     return (
         <>
+            <Header title="LES BIERES" description="Retrouvez toutes les bières disponible sur notre site." image="beer_1.jpg"/>
+
             <section className="flex justify-center my-7">
                 <div className="w-full max-w-sm">
                     <div className="w-full">
