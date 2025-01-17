@@ -43,10 +43,10 @@ function BeerDetailPage() {
     }, []);
 
     return (
-        <section className="container mx-auto my-10 lg:flex gap-10 p-10 rounded-3xl w-full border">
-            <div className="rounded-lg w-full mb-5 lg:max-w-72 ">
-                <img className="w-full object-cover rounded-2xl" src="/src/assets/images/beer_test.jpg" alt={beer.name} />
-            </div>
+        <section className="my-10 w-full border lg:flex gap-10 lg:max-h-72">
+
+            <img className="w-full object-cover mb-5 lg:max-w-72 lg:mb-0" src="/src/assets/images/beer_test.jpg" alt={beer.name} />
+
             <div className="flex flex-col gap-10">
             <div className="lg:flex gap-10 text-gray-950 font-extrabold text-4xl">
                 <h2>{beer?.name}</h2>
@@ -57,7 +57,6 @@ function BeerDetailPage() {
             </div>
 
             <p className="text-gray-500 text-xl">{beer.description}</p>
-
 
             <div className="flex gap-8 text-gray-700">
                 <div className="flex flex-col">
