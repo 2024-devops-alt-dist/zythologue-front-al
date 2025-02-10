@@ -4,19 +4,31 @@ import { Beer } from "../interfaces/Beer";
 import { fetchBeers } from "../services/BeerService";
 import filterData from "../utils/functions/filterData";
 import Header from "../components/Header";
+import { Category } from "../interfaces/Category";
+import { fetchCategories } from "../services/CategoryService";
 
 function BeersPage() {
 
     const [beers, setBeers] = useState<Beer[]>([]);
     const [fetchedBeers, setFetchedBeers] = useState<Beer[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [searchInput, setSearchInput] = useState<string>("");
 
     const getBeers = async () => {
         try {
             const data: Beer[] = await fetchBeers();
-            setFetchedBeers(data);        
+            setFetchedBeers(data);      
             setBeers(data);
         } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getCategories = async () => {
+        try {
+            const data: Category[] = await fetchCategories();
+            setCategories(data);
+        } catch(error) {
             console.error(error);
         }
     }
@@ -25,8 +37,9 @@ function BeersPage() {
         setSearchInput(e.target.value.toLowerCase());
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         getBeers();
+        getCategories();
     }, []);
 
     useEffect(() => {
@@ -49,7 +62,7 @@ function BeersPage() {
                 </div>
             </section>
 
-            <BeersList beers={beers} />
+            <BeersList beers={beers} categories={categories} />
         </>
     );
 }

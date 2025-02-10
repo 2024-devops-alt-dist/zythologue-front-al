@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router";
 import { fetchBreweryById } from "../services/BreweryService";
 import { Beer } from "../interfaces/Beer";
 import { Brewery } from "../interfaces/Brewery";
+import { fetchCategoryById } from "../services/CategoryService";
+import { Category } from "../interfaces/Category";
 
 function BeerDetailPage() {
 
@@ -25,22 +27,48 @@ function BeerDetailPage() {
         link: "",
         email: ""
     });
+    const [category, setCategory] = useState<Category>({
+        id: 0,
+        name: "",
+        description: ""
+    });
     const { id } = useParams();
 
-    const getDetails = async () => {
+    const getBeer = async () => {
         try {
             const beerData: Beer = await fetchBeerById(id);
             setBeer(beerData);         
-            const breweryData: Brewery = await fetchBreweryById(beerData.breweryId);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getBrewery = async () => {
+        try {        
+            const breweryData: Brewery = await fetchBreweryById(beer.breweryId);
             setBrewery(breweryData);
         } catch (error) {
             console.error(error);
         }
     }
 
+    const getCategory = async () => {
+        try {
+            const categoryData: Category = await fetchCategoryById(beer.categoryId);
+            setCategory(categoryData);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
-        getDetails();
+        getBeer();
     }, []);
+
+    useEffect(() => {
+        getBrewery();
+        getCategory();
+    }, [beer])
 
     return (
         <section id="beer" className="w-full py-5 bg-green-600">
@@ -56,6 +84,8 @@ function BeerDetailPage() {
                     </div>
                     <hr className="text-green-600" />
                     <p className="text-white text-xl">{beer.description}</p>
+                    <hr className="text-green-600" />
+                    <p className="text-green-600 text-xl">{category.name}<span className="text-white text-xl"> - {category.description}</span></p>
                     <hr className="text-green-600" />
 
                     <div className="flex gap-8">

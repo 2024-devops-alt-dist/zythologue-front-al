@@ -15,7 +15,7 @@ export const fetchBeers = async (): Promise<Beer[]> => {
     }
     let beers: Beer[] = [];
     const data = await res.json();
-    for (const element of data) {
+    for (const element of data) {  
         const beer: Beer = {
             id: element.beer_id,
             breweryId: element.brewery_id,

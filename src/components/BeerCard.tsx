@@ -1,13 +1,16 @@
 import { Link } from "react-router";
 import { Beer } from "../interfaces/Beer";
 import ArrowButton from "./ArrowButton";
+import { Category } from "../interfaces/Category";
 
-function BeerCard({ beer }: {beer: Beer}) {
+function BeerCard({ beer, category }: {beer: Beer, category: Category }) {
     return (
-        <div className="max-w-sm bg-zinc-800 border border-zinc-500">
+        <div className="max-w-sm min-w-sm bg-zinc-800 border border-zinc-500">
             <div className="p-4">
 
                 <h3 className="text-xl font-semibold text-white uppercase">{beer.name}</h3>
+
+                <p className="mt-2 text-zinc-500">{category.name}</p>
 
                 <p className="mt-2 text-zinc-500">{beer.description}</p>
 
