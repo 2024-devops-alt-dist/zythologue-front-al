@@ -13,6 +13,7 @@ function BeersPage() {
     const [fetchedBeers, setFetchedBeers] = useState<Beer[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
     const [searchInput, setSearchInput] = useState<string>("");
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
     const getBeers = async () => {
         try {
@@ -33,8 +34,18 @@ function BeersPage() {
         }
     }
     
-    const handleChange = (e: any) => {
+    const searchInputOnChange = (e: any) => {
         setSearchInput(e.target.value.toLowerCase());
+    }
+
+    const filterCategoryOnChange = (e: any) => {
+        setSelectedCategory(parseInt(e.target.value));
+    }
+
+    const handleResetClick = () => {
+        setBeers(fetchedBeers);
+        setSearchInput("");
+        setSelectedCategory(0);
     }
 
     useEffect(() => {        
@@ -43,26 +54,50 @@ function BeersPage() {
     }, []);
 
     useEffect(() => {
-        setBeers(filterData(fetchedBeers, searchInput, "name"))
-    }, [searchInput])
+        setBeers(filterData(fetchedBeers, searchInput, "name"));
+    }, [searchInput]);
+
+    useEffect(() => {        
+        setBeers(filterData(fetchedBeers, selectedCategory, "categoryId"));
+    }, [selectedCategory])
 
     return (
         <>
-            <Header title="Bières" description="Retrouvez toutes les bières disponible sur notre site." />
+            <Header title="Bières" description="Retrouvez toutes les bières disponibles sur notre site." />
 
-            <section className="flex justify-center bg-black p-10">
-                <div className="flex justify-center w-full">
-                    <div className="w-full max-w-md">
+            <section className="flex justify-center flex-wrap bg-black p-10">
+                <div className="w-full flex justify-center items-center flex-wrap gap-5">
+                    <div className="">
                         <input
-                            className="w-full bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400"
+                            className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400"
                             placeholder="Entrez votre recherche" 
-                            onChange={handleChange}
+                            onChange={searchInputOnChange}
                         />
+                    </div>
+                    <div>
+                        <label className="text-white">
+                            <select
+                            className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400"
+                                value={selectedCategory}
+                                onChange={filterCategoryOnChange}>
+                                    <option value={0}>Sélectionner une catégorie</option>
+                                {categories.map(category => (
+                                    <option key={category.id} value={category.id}>{category.name}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <button className="text-white" onClick={handleResetClick}>Réinitialiser</button>
                     </div>
                 </div>
             </section>
-
-            <BeersList beers={beers} categories={categories} />
+            {beers.length === 0 ? 
+                <section className="flex justify-center flex-wrap bg-black p-10 min-h-72">
+                    <p className="text-zinc-400 text-4xl">Oups, aucune bière n'a été trouvé.</p>
+                </section> :
+                <BeersList beers={beers} categories={categories} />
+            }
         </>
     );
 }

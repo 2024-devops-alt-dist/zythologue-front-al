@@ -1,15 +1,20 @@
-function filterData<T>(data: T[], searchString: string, key: keyof T): T[] {
-    let searchResult: T[] = [];    
+function filterData<T>(data: T[], searchValue: string | number, key: keyof T): T[] {
+    let searchResult: T[] = [];
     for (const item of data) {
-        const propertyValue = item[key];
-        if (typeof item[key] !== 'string') {
-            return data;
-        }
-        if (searchString === "") {
+        const propertyValue = item[key];       
+        if (searchValue === "" || searchValue === 0) {
             return data;
         } 
-        if (typeof propertyValue === 'string' && propertyValue.toLowerCase().includes(searchString)) {                
-            searchResult.push(item);
+        if (typeof searchValue === 'string') {
+            if (typeof propertyValue === 'string' && propertyValue.toLowerCase().includes(searchValue)) {                
+                searchResult.push(item);
+            }
+        }
+        if (typeof searchValue === 'number') {
+            console.log(typeof searchValue, searchValue);   
+            if (typeof propertyValue === 'number' && propertyValue === searchValue) {
+                searchResult.push(item);
+            }
         }
     }
     return searchResult;
