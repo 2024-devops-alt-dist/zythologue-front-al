@@ -23,7 +23,6 @@ function BreweryCard({ brewery }: {brewery: Brewery}) {
                 <div className="text-right ">
                     <Link to={`/breweries/${brewery.id}`}>
                         <ArrowButton color="white" text="Voir plus" />
-
                     </Link>
                 </div>
                 </div>

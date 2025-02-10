@@ -24,7 +24,7 @@ function Navbar() {
                 >
                     <img src="/src/assets/icons/burger_menu.svg" alt=""  className="w-10 h-10" />
                 </button>
-                <div className={`w-full z-10 fixed p-5 left-0 bg-zinc-800 md:hidden ${active ? 'top-24' : 'top-[-100%]'}`}>
+                <div className={`w-full z-10 fixed p-5 left-0 bg-zinc-800 md:hidden transition-transform ${active ? 'top-24' : 'top-[-100%]'}`}>
                     <div className="flex flex-col items-center justify-center gap-5 p-5">
                         <NavLink to="/">
                             {({ isActive }) => (

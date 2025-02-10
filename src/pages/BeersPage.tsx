@@ -59,7 +59,7 @@ function BeersPage() {
 
     useEffect(() => {        
         setBeers(filterData(fetchedBeers, selectedCategory, "categoryId"));
-    }, [selectedCategory])
+    }, [selectedCategory]);
 
     return (
         <>

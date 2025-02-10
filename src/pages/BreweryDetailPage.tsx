@@ -5,6 +5,8 @@ import { Brewery } from "../interfaces/Brewery";
 import { Beer } from "../interfaces/Beer";
 import { fetchBeers } from "../services/BeerService";
 import BeersList from "../components/BeersList";
+import { Category } from "../interfaces/Category";
+import { fetchCategories } from "../services/CategoryService";
 
 function BreweryDetailPage() {
 
@@ -18,9 +20,11 @@ function BreweryDetailPage() {
         email: ""
     });
     const [beers, setBeers] = useState<Beer[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
+    
     const { id } = useParams();
 
-    const getDetails = async () => {
+    const getBrewery = async () => {
         try {      
             const breweryData: Brewery = await fetchBreweryById(id);
             setBrewery(breweryData);
@@ -37,8 +41,28 @@ function BreweryDetailPage() {
         }
     }
 
+    const getBeers = async () => {
+        try {
+            const data: Beer[] = await fetchBeers();
+            setBeers(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getCategories = async () => {
+        try {
+            const data: Category[] = await fetchCategories();
+            setCategories(data);
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
-        getDetails();
+        getBrewery();
+        getBeers();
+        getCategories();
     }, []);
 
     return (
@@ -70,7 +94,7 @@ function BreweryDetailPage() {
             </section>
             <section className="bg-black p-10 ">
                 <h2 className="text-white text-4xl">Les bières proposées par cette brasserie :</h2>
-                <BeersList beers={beers} />
+                <BeersList beers={beers} categories={categories}/>
             </section>
         </>
     )
