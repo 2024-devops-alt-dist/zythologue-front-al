@@ -11,7 +11,6 @@ function filterData<T>(data: T[], searchValue: string | number, key: keyof T): T
             }
         }
         if (typeof searchValue === 'number') {
-            console.log(typeof searchValue, searchValue);   
             if (typeof propertyValue === 'number' && propertyValue === searchValue) {
                 searchResult.push(item);
             }

@@ -6,12 +6,15 @@ import filterData from "../utils/functions/filterData";
 import Header from "../components/Header";
 import { Category } from "../interfaces/Category";
 import { fetchCategories } from "../services/CategoryService";
+import { Photo } from "../interfaces/Photo";
+import { fetchPhotos } from "../services/PhotoService";
 
 function BeersPage() {
 
     const [beers, setBeers] = useState<Beer[]>([]);
     const [fetchedBeers, setFetchedBeers] = useState<Beer[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
+    const [photos, setPhotos] = useState<Photo[]>([]);
     const [searchInput, setSearchInput] = useState<string>("");
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
@@ -29,6 +32,15 @@ function BeersPage() {
         try {
             const data: Category[] = await fetchCategories();
             setCategories(data);
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
+    const getPhotos = async () => {
+        try {
+            const data: Photo[] = await fetchPhotos();
+            setPhotos(data);
         } catch(error) {
             console.error(error);
         }
@@ -51,21 +63,22 @@ function BeersPage() {
     useEffect(() => {        
         getBeers();
         getCategories();
+        getPhotos(); 
     }, []);
 
     useEffect(() => {
-        setBeers(filterData(fetchedBeers, searchInput, "name"));
+        setBeers(filterData<Beer>(beers, searchInput, "name"));
     }, [searchInput]);
 
     useEffect(() => {        
-        setBeers(filterData(fetchedBeers, selectedCategory, "categoryId"));
+        setBeers(filterData<Beer>(beers, selectedCategory, "categoryId"));
     }, [selectedCategory]);
 
     return (
         <>
             <Header title="Bières" description="Retrouvez toutes les bières disponibles sur notre site." />
 
-            <section className="flex justify-center flex-wrap bg-black p-10">
+            <section className="flex justify-center flex-wrap bg-black px-20 py-10">
                 <div className="w-full flex justify-center items-center flex-wrap gap-5">
                     <div className="">
                         <input
@@ -96,7 +109,7 @@ function BeersPage() {
                 <section className="flex justify-center flex-wrap bg-black p-10 min-h-72">
                     <p className="text-zinc-400 text-4xl">Oups, aucune bière n'a été trouvé.</p>
                 </section> :
-                <BeersList beers={beers} categories={categories} />
+                <BeersList beers={beers} categories={categories} photos={photos} />
             }
         </>
     );

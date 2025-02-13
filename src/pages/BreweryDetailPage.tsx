@@ -7,6 +7,8 @@ import { fetchBeers } from "../services/BeerService";
 import BeersList from "../components/BeersList";
 import { Category } from "../interfaces/Category";
 import { fetchCategories } from "../services/CategoryService";
+import { Photo } from "../interfaces/Photo";
+import { fetchPhotos } from "../services/PhotoService";
 
 function BreweryDetailPage() {
 
@@ -21,6 +23,8 @@ function BreweryDetailPage() {
     });
     const [beers, setBeers] = useState<Beer[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
+    const [photos, setPhotos] = useState<Photo[]>([]);
+    
     
     const { id } = useParams();
 
@@ -37,6 +41,15 @@ function BreweryDetailPage() {
             }
             setBeers(beersBrewery);
         } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getPhotos = async () => {
+        try {
+            const data: Photo[] = await fetchPhotos();
+            setPhotos(data);
+        } catch(error) {
             console.error(error);
         }
     }
@@ -63,6 +76,7 @@ function BreweryDetailPage() {
         getBrewery();
         getBeers();
         getCategories();
+        getPhotos();
     }, []);
 
     return (
@@ -94,7 +108,7 @@ function BreweryDetailPage() {
             </section>
             <section className="bg-black p-10 ">
                 <h2 className="text-white text-4xl">Les bières proposées par cette brasserie :</h2>
-                <BeersList beers={beers} categories={categories}/>
+                <BeersList beers={beers} categories={categories} photos={photos} />
             </section>
         </>
     )

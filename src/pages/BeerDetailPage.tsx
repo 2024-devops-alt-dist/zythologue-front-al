@@ -6,6 +6,8 @@ import { Beer } from "../interfaces/Beer";
 import { Brewery } from "../interfaces/Brewery";
 import { fetchCategoryById } from "../services/CategoryService";
 import { Category } from "../interfaces/Category";
+import { Photo } from "../interfaces/Photo";
+import { fetchPhotos } from "../services/PhotoService";
 
 function BeerDetailPage() {
 
@@ -32,6 +34,12 @@ function BeerDetailPage() {
         name: "",
         description: ""
     });
+    const [photo, setPhoto] = useState<Photo>({
+        id: 0,
+        beerId: 0,
+        url: ""
+    });
+
     const { id } = useParams();
 
     const getBeer = async () => {
@@ -61,6 +69,19 @@ function BeerDetailPage() {
         }
     }
 
+    const getPhoto = async (beerId: number) => {
+        try {
+            const data: Photo[] = await fetchPhotos();
+            for (let photo of data) {
+                if(photo.beerId === beerId) {
+                    setPhoto(photo);
+                }
+            }
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
         getBeer();
     }, []);
@@ -68,25 +89,25 @@ function BeerDetailPage() {
     useEffect(() => {
         getBrewery();
         getCategory();
+        getPhoto(beer.id);
     }, [beer])
 
     return (
         <section id="beer" className="w-full py-5 bg-green-600">
-            <div className="flex flex-col md:flex-row bg-black">
-                <img className="w-full object-cover md:w-1/2 md:mb-0" src="/src/assets/images/beer_test.jpg" alt={beer.name} />
+            <div className="flex flex-col-reverse md:flex-row bg-black">
+                <img className="w-full object-cover md:w-1/4 md:mb-0" src={`/src/assets/images/${photo.url}`} alt={beer.name} />
 
-                <div className="flex flex-col gap-10 p-10 md:w-1/2">
+                <div className="flex flex-col gap-10 p-10 md:w-3/4">
                     <div className="md:flex gap-10 text-gray-950 text-4xl">
                         <h2 className="text-green-600 uppercase">{beer.name}</h2>
                         <Link to={`/breweries/${beer.breweryId}`} className="text-white hover:underline">
                             {brewery.name}
                         </Link>
                     </div>
-                    <hr className="text-green-600" />
+                    <hr className="border-zinc-500" />
                     <p className="text-white text-xl">{beer.description}</p>
-                    <hr className="text-green-600" />
                     <p className="text-green-600 text-xl">{category.name}<span className="text-white text-xl"> - {category.description}</span></p>
-                    <hr className="text-green-600" />
+                    <hr className="border-zinc-500" />
 
                     <div className="flex gap-8">
                         <div className="flex flex-col">
@@ -102,14 +123,14 @@ function BeerDetailPage() {
             </div>
             <div className="flex flex-col md:flex-row bg-black">
 
-                <div className="flex flex-col gap-10 p-10 md:w-1/2">
+                <div className="flex flex-col gap-10 p-10 md:w-3/4">
                     <div className="lg:flex gap-10 text-gray-950 text-4xl">
                         <h2 className="text-green-600 uppercase">Ingrédients</h2>
                     </div>
-                    <hr className="text-green-600" />
+                    <hr className="border-zinc-500" />
 
                 </div>
-                <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/src/assets/images/beer_3.jpg" alt={beer.name} />
+                <img className="w-full object-cover mb-5 md:w-1/4 md:mb-0" src="/src/assets/images/hop.jpg" alt={beer.name} />
             </div>
         </section>
     )
