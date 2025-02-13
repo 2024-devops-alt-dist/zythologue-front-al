@@ -73,7 +73,7 @@ function BeerDetailPage() {
         try {
             const data: Photo[] = await fetchPhotos();
             for (let photo of data) {
-                if(photo.beerId === beerId) {
+                if (photo.beerId === beerId) {
                     setPhoto(photo);
                 }
             }
@@ -89,7 +89,7 @@ function BeerDetailPage() {
     useEffect(() => {
         getBrewery();
         getCategory();
-        getPhoto(beer.id);
+        getPhoto(beer.id ? beer.id : 1);
     }, [beer])
 
     return (

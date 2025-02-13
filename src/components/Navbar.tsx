@@ -43,6 +43,11 @@ function Navbar() {
                                 <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-white"} >Brasseries</span>
                             )}
                         </NavLink>
+                        <NavLink to="/beers/create">
+                            {({ isActive }) => (
+                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-white"} >Nouvelle bière</span>
+                            )}
+                        </NavLink>
                     </div>
                     <div className="flex flex-col items-center justify-center">
                         <NavLink to="/login">
@@ -59,19 +64,24 @@ function Navbar() {
                     <div className="flex items-center justify-center gap-10 me-16">
                         <NavLink to="/">
                             {({ isActive }) => (
-                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-white"} >Accueil</span>
+                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-green-600"} >Accueil</span>
                             )}
                         </NavLink>
 
                         <NavLink to="/beers">
                             {({ isActive }) => (
-                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-white"} >Bières</span>
+                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-green-600"} >Bières</span>
                             )}
                         </NavLink>
 
                         <NavLink to="/breweries">
                             {({ isActive }) => (
-                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-white"} >Brasseries</span>
+                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-green-600"} >Brasseries</span>
+                            )}
+                        </NavLink>
+                        <NavLink to="/beers/create">
+                            {({ isActive }) => (
+                                <span className={isActive ? "text-white font-bold" : "text-gray-300 hover:text-green-600"} >Nouvelle bière</span>
                             )}
                         </NavLink>
                     </div>
