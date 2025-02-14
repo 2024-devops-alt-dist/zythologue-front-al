@@ -6,6 +6,7 @@ import BeersPage from './pages/BeersPage';
 import BreweryDetailPage from './pages/BreweryDetailPage';
 import Navbar from './components/Navbar';
 import BeerCreationPage from './pages/BeerCreationPage';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/breweries' element={<BreweriesPage />} />
         <Route path='/breweries/:id' element={<BreweryDetailPage />} />
       </Routes>
+      <Footer />
     </>
   )
 }

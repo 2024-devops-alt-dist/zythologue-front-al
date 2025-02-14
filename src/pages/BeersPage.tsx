@@ -110,7 +110,7 @@ function BeersPage() {
                 </div>
             </section>
             {beers.length === 0 ? 
-                <section className="flex justify-center flex-wrap bg-black p-10 min-h-72">
+                <section className="flex justify-center flex-wrap bg-black p-10 min-h-80">
                     <p className="text-zinc-400 text-4xl">Oups, aucune bière n'a été trouvé.</p>
                 </section> :
                 <BeersList beers={beers} categories={categories} photos={photos} />
