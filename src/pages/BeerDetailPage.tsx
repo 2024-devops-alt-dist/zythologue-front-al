@@ -109,8 +109,11 @@ function BeerDetailPage() {
     return (
         <section id="beer" className="w-full">
             <div className="flex flex-col-reverse md:flex-row bg-black">
+            {photo.url ? (
                 <img className="w-full object-cover md:w-1/4 md:mb-0" src={`/assets/images/${photo.url}`} alt={beer.name} />
-
+            ) : (
+                <img src="/assets/images/beer_logo.png" alt="Photo de bière" className="object-scale-down max-w-full lg:max-w-44" />
+            )}
                 <div className="flex flex-col gap-10 p-10 md:w-3/4">
                     <div className="md:flex gap-10 text-gray-950 text-4xl">
                         <h2 className="text-green-600 uppercase">{beer.name}</h2>
