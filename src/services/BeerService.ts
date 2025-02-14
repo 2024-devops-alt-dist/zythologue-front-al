@@ -1,7 +1,6 @@
 import { Beer } from "../interfaces/Beer";
 
-const apiUrl = import.meta.env.API_URL;
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export const fetchBeers = async (): Promise<Beer[]> => {
     const res = await fetch(`${apiUrl}/beers`, {
