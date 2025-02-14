@@ -59,17 +59,17 @@ function BeerForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="p-10 w-full max-w-lg bg-black border border-zinc-700 rounded-md">
-                <div className="flex flex-col">
-                    <label htmlFor="name">Nom :</label>
-                    <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required />
+            <form onSubmit={handleSubmit} className="p-10 w-full max-w-xl bg-black border border-zinc-700 text-zinc-400 rounded-md pb-10">
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="name" className="pb-2">Nom :</label>
+                    <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required />
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="description">Description :</label>
-                    <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required></textarea>
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="description" className="pb-2">Description :</label>
+                    <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required></textarea>
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="category">Catégorie :</label>
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="category" className="pb-2">Catégorie :</label>
                     <select name="category" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required>
                             <option value={0}>Sélectionner une catégorie</option>
                         {categories.map(category => (
@@ -77,8 +77,8 @@ function BeerForm() {
                         ))}
                     </select>
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="brewery">Brasserie :</label>
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="brewery" className="pb-2">Brasserie :</label>
                     <select name="brewery" value={breweryId} onChange={(e) => setBreweryId(parseInt(e.target.value))} className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required>
                             <option value={0}>Sélectionner une brasserie</option>
                         {breweries.map(brewery => (
@@ -86,12 +86,12 @@ function BeerForm() {
                         ))}
                     </select>
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="abv">Taux d'alcool(abv) :</label>
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="abv" className="pb-2">Taux d'alcool(abv) :</label>
                     <input id="abv" name="abv" value={abv} onChange={(e) => setAbv(parseInt(e.target.value))} type="number" className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required />
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="ibu">Amertume(ibu) :</label>
+                <div className="flex flex-col pb-5">
+                    <label htmlFor="ibu" className="pb-2">Amertume(ibu) :</label>
                     <input id="ibu" name="ibu" value={ibu} onChange={(e) => setIbu(parseInt(e.target.value))} type="number" className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required />
                 </div>
 

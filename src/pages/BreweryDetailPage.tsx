@@ -30,7 +30,7 @@ function BreweryDetailPage() {
 
     const getBrewery = async () => {
         try {      
-            const breweryData: Brewery = await fetchBreweryById(id);
+            const breweryData: Brewery = await fetchBreweryById(id ? parseInt(id):id );
             setBrewery(breweryData);
             const beersData: Beer[] = await fetchBeers();
             const beersBrewery: Beer[] = [];
@@ -47,7 +47,7 @@ function BreweryDetailPage() {
 
     const getPhotos = async () => {
         try {
-            const data: Photo[] = await fetchPhotos();
+            const data: Photo[] = await fetchPhotos();            
             setPhotos(data);
         } catch(error) {
             console.error(error);
@@ -73,7 +73,12 @@ function BreweryDetailPage() {
     }
 
     useEffect(() => {
-        getBrewery();
+        if (id) {
+            getBrewery();
+        }
+    }, [id]);
+
+    useEffect(() => {
         getBeers();
         getCategories();
         getPhotos();
@@ -81,8 +86,8 @@ function BreweryDetailPage() {
 
     return (
         <>
-            <section className="w-full py-5 bg-green-600">
-                <div className="flex bg-black">
+            <section className="w-full">
+                <div className="flex flex-col-reverse md:flex-row bg-black">
                     <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/src/assets/images/brewery_test.jpg" alt={brewery.name} />
 
                     <div className="flex flex-col gap-10 p-10 md:w-1/2">

@@ -51,18 +51,18 @@ function BeerDetailPage() {
         }
     }
 
-    const getBrewery = async () => {
+    const getBrewery = async (breweryId: number) => {
         try {        
-            const breweryData: Brewery = await fetchBreweryById(beer.breweryId);
+            const breweryData: Brewery = await fetchBreweryById(breweryId);
             setBrewery(breweryData);
         } catch (error) {
             console.error(error);
         }
     }
 
-    const getCategory = async () => {
+    const getCategory = async (categoryId: number) => {
         try {
-            const categoryData: Category = await fetchCategoryById(beer.categoryId);
+            const categoryData: Category = await fetchCategoryById(categoryId);
             setCategory(categoryData);
         } catch (error) {
             console.error(error);
@@ -83,17 +83,31 @@ function BeerDetailPage() {
     }
 
     useEffect(() => {
-        getBeer();
-    }, []);
-
+        if (id) {
+            getBeer();
+        }
+    }, [id]);
+    
     useEffect(() => {
-        getBrewery();
-        getCategory();
-        getPhoto(beer.id ? beer.id : 1);
-    }, [beer])
+        if (beer.breweryId) {
+            getBrewery(beer.breweryId);
+        }
+    }, [beer.breweryId]);
+    
+    useEffect(() => {
+        if (beer.categoryId) {
+            getCategory(beer.categoryId);
+        }
+    }, [beer.categoryId]);
+    
+    useEffect(() => {
+        if (beer.id) {
+            getPhoto(beer.id);
+        }
+    }, [beer.id]);
 
     return (
-        <section id="beer" className="w-full py-5 bg-green-600">
+        <section id="beer" className="w-full">
             <div className="flex flex-col-reverse md:flex-row bg-black">
                 <img className="w-full object-cover md:w-1/4 md:mb-0" src={`/src/assets/images/${photo.url}`} alt={beer.name} />
 

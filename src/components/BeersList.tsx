@@ -16,7 +16,7 @@ function BeersList({ beers, categories, photos }: { beers: Beer[], categories: C
                 }
                 let photo = {id: 0, beerId: 0, url: "" };
                 for (let p of photos) {
-                    if (beer.id === p.beerId) {
+                    if (beer.id === p.beerId) {                        
                         photo = p;
                     }
                 }
