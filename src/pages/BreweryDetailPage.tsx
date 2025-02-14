@@ -88,7 +88,7 @@ function BreweryDetailPage() {
         <>
             <section className="w-full">
                 <div className="flex flex-col-reverse md:flex-row bg-black">
-                    <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/src/assets/images/brewery_test.jpg" alt={brewery.name} />
+                    <img className="w-full object-cover mb-5 md:w-1/2 md:mb-0" src="/assets/images/brewery_test.jpg" alt={brewery.name} />
 
                     <div className="flex flex-col gap-10 p-10 md:w-1/2">
                         <div className="md:flex gap-10 items-center">

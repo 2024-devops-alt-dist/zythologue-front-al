@@ -15,7 +15,7 @@ function Navbar() {
                 <div className="z-50 top-0 w-full h-24 flex justify-between items-center p-5 text-white bg-black">
                     <div className="w-1/5">
                         <Link to="/" className="flex gap-5 w-full">
-                            <img src="/public/beer_logo.png" alt="logo zythologue" className="max-h-10"/>
+                            <img src="assets/images/beer_logo.png" alt="logo zythologue" className="max-h-10"/>
                             <span className="self-center text-xl font-bold text-green-600">Zythologue</span>
                         </Link>
                     </div>
@@ -23,7 +23,7 @@ function Navbar() {
                         className="md:hidden"
                         onClick={displayMenu}
                     >
-                        <img src="/src/assets/icons/burger_menu.svg" alt=""  className="w-10 h-10" />
+                        <img src="/assets/icons/burger_menu.svg" alt=""  className="w-10 h-10" />
                     </button>
                 </div>
 

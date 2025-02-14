@@ -109,7 +109,7 @@ function BeerDetailPage() {
     return (
         <section id="beer" className="w-full">
             <div className="flex flex-col-reverse md:flex-row bg-black">
-                <img className="w-full object-cover md:w-1/4 md:mb-0" src={`/src/assets/images/${photo.url}`} alt={beer.name} />
+                <img className="w-full object-cover md:w-1/4 md:mb-0" src={`/assets/images/${photo.url}`} alt={beer.name} />
 
                 <div className="flex flex-col gap-10 p-10 md:w-3/4">
                     <div className="md:flex gap-10 text-gray-950 text-4xl">
@@ -144,7 +144,7 @@ function BeerDetailPage() {
                     <hr className="border-zinc-500" />
 
                 </div>
-                <img className="w-full object-cover mb-5 md:w-1/4 md:mb-0" src="/src/assets/images/hop.jpg" alt={beer.name} />
+                <img className="w-full object-cover mb-5 md:w-1/4 md:mb-0" src="/assets/images/hop.jpg" alt={beer.name} />
             </div>
         </section>
     )

@@ -8,7 +8,7 @@ function BreweryCard({ brewery }: {brewery: Brewery}) {
 
             <img
                 className="w-full h-48 object-cover"
-                src="/src/assets/images/brewery_test.jpg" 
+                src="/assets/images/brewery_test.jpg" 
                 alt="photo de bière"
             />
             <div className="p-4">

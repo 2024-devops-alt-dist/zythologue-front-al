@@ -8,9 +8,9 @@ function BeerCard({ beer, category, photoUrl }: {beer: Beer, category: Category,
     return (
         <div className="max-w-md bg-zinc-800 border border-zinc-500 lg:flex lg:max-w-lg">
             {photoUrl ? (
-                <img src={`/src/assets/images/${photoUrl}`} alt="Photo de bière" className="max-w-sm lg:max-w-44" />
+                <img src={`/assets/images/${photoUrl}`} alt="Photo de bière" className="max-w-sm lg:max-w-44" />
             ) : (
-                <img src="/src/assets/images/beer_logo.png" alt="Photo de bière" className="object-scale-down max-w-sm lg:max-w-44" />
+                <img src="/assets/images/beer_logo.png" alt="Photo de bière" className="object-scale-down max-w-sm lg:max-w-44" />
             )}
             <div className="flex flex-col justify-around p-4">
 
