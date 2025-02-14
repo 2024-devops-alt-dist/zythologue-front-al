@@ -1,6 +1,6 @@
 import { Photo } from "../interfaces/Photo";
 
-const apiUrl = "http://localhost:3000/api";
+const apiUrl = import.meta.env.API_URL;
 
 
 export const fetchPhotos = async (): Promise<Photo[]> => {

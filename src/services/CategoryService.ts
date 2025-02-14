@@ -1,6 +1,6 @@
 import { Category } from "../interfaces/Category";
 
-const apiUrl = "http://localhost:3000/api";
+const apiUrl = import.meta.env.API_URL;
 
 
 export const fetchCategories = async (): Promise<Category[]> => {

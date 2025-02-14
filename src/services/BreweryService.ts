@@ -1,6 +1,6 @@
 import { Brewery } from "../interfaces/Brewery";
 
-const apiUrl = "http://localhost:3000/api";
+const apiUrl = import.meta.env.API_URL;
 
 
 export const fetchBreweries = async (): Promise<Brewery[]> => {
