@@ -67,7 +67,11 @@ function BeersPage() {
     }, []);
 
     useEffect(() => {
-        setBeers(filterData<Beer>(beers, searchInput, "name"));
+        if (searchInput === "") {
+            setBeers(fetchedBeers);
+        } else {
+            setBeers(filterData<Beer>(beers, searchInput, "name"));
+        }
     }, [searchInput]);
 
     useEffect(() => {        
