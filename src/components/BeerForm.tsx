@@ -59,7 +59,7 @@ function BeerForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="p-10 max-w-lg bg-black border border-zinc-700 rounded-md">
+            <form onSubmit={handleSubmit} className="p-10 w-full max-w-lg bg-black border border-zinc-700 rounded-md">
                 <div className="flex flex-col">
                     <label htmlFor="name">Nom :</label>
                     <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-zinc-800 placeholder:text-zinc-400 text-zinc-400 border border-black rounded-md pl-3 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-green-600 hover:border-green-400" required />
@@ -96,8 +96,10 @@ function BeerForm() {
                 </div>
 
                 <p className="text-green-600">{message}</p>
+                <div className="text-end">
+                    <button type="submit" className="my-10 rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2">Créer</button>
+                </div>
 
-                <button type="submit" className="my-10 rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2">Créer</button>
             </form>
         </>
     );
